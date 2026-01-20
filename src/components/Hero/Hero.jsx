@@ -9,13 +9,6 @@ const Hero = () => {
     }
   }
 
-  const handleExploreFeatures = () => {
-    const featuresSection = document.getElementById('features')
-    if (featuresSection) {
-      featuresSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section className="hero">
       <div className="hero-container">

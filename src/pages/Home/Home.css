@@ -104,6 +104,21 @@
 }
 
 @media (max-width: 768px) {
+  .site-header {
+    padding: 1rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .home-logo-section {
+    width: 100%;
+    justify-content: center;
+  }
+
   .home-header {
     padding: 1rem 1.25rem;
   }
@@ -417,7 +432,108 @@
 
   .challenges-grid,
   .features-grid,
-  .steps {
+  .steps,
+  .solution-features {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .header-container {
+    padding: 0 0.5rem;
+  }
+
+  .logo-image {
+    height: 35px;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 2rem 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .challenge-card,
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .challenge-card h3,
+  .feature-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .solution-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .solution-text p {
+    font-size: 1rem;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+
+  .waitlist-form {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Reduce margins on mobile */
+  .mt-10 {
+    margin-top: 1.5rem;
+  }
+
+  .mt-20 {
+    margin-top: 3rem;
+  }
+
+  .mt-30 {
+    margin-top: 4rem;
   }
 }

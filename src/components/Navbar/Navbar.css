@@ -100,52 +100,15 @@
 
 @media (max-width: 968px) {
   .mobile-menu-toggle {
-    display: flex;
-  }
-
-  .navbar-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .navbar-menu.active {
-    max-height: 400px;
-  }
-
-  .navbar-menu li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar-menu li a {
-    display: block;
-    padding: 1rem 2rem;
-    color: #1a1a1a;
-    justify-content: center;
-  }
-
-  .navbar-actions {
     display: none;
   }
 
-  .navbar-menu.active ~ .navbar-actions {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-actions {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1rem 2rem;
-    gap: 1rem;
   }
 }
 
