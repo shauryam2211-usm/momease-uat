@@ -1,0 +1,83 @@
+import React, { useEffect, useState } from "react";
+import Hero from "../components/home/Hero";
+import NeedMoneySection from "../components/home/NeedMoneySection";
+import EmiCalci from "../components/home/EmiCalci";
+import Navbar from "../components/Navbar";
+import LoanProcess from "../components/home/LoanProcess";
+import TrustBaba from "../components/home/TrustBaba";
+import QuickEasy from "../components/home/QuickEasy";
+import HomeFooter from "../components/home/HomeFooter";
+import MoneyMoments from "../components/home/MoneyMoments";
+import LoanTypesScroll from "../components/home/LoanTypesScroll";
+import Logo from "../assets/logo.png";
+import Footer from "../components/common/Footer";
+import GoogleReviews from "../components/home/GoogleReviews";
+
+
+export default function Home() {
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 700) {
+  //       setShowButton(true);
+  //     } else {
+  //       setShowButton(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+  return (
+    <div className="bg-black pl-10 pr-10 pb-10 max-[1320px]:pl-5 max-[1320px]:pr-5 max-[425px]:pl-2 max-[425px]:pr-2">
+      {/* <div className="fixed left-0 top-[8%] z-50 hidden md:block" style={{ marginLeft: '3rem' }}>
+        <img src="/icici.png" alt="ICICI Lombard logo left" style={{ width: '9rem', maxWidth: '18vw' }} />
+      </div> */}
+      <div className="bg-white  rounded-b-[50px]">
+        <div className="flex justify-between items-center gap-4 mr-10 pt-5 pl-5">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img src={Logo} alt="Logo" className="h-10 w-auto" />
+            <div className="h-8 w-2 bg-[#5fc3b4] mx-2 rounded" />
+            <span className="text-sm sm:text-lg md:text-2xl font-bold font-poppins whitespace-normal max-w-[90px] sm:max-w-none">
+              <span style={{ color: '#3bb29e' }}>Fun</span>
+              <span style={{ color: '#3bb29e' }}>do</span>
+              <span style={{ color: '#a3d9b1' }}>baba</span>
+            </span>
+          </div>
+          <Navbar />
+        </div>
+        <div className="mt-10">
+          <Hero />
+        </div>
+        {/* <div className="flex justify-center mt-6 mb-6">
+          <img src="/icici.png" alt="ICICI Lombard logo" style={{ width: '13rem', maxWidth: '90vw' }} />
+        </div> */}
+        <div className="mt-20">
+          <NeedMoneySection />
+        </div>
+        <div className="mt-10">
+          <GoogleReviews />
+        </div>
+        <div className="mt-30">
+          <EmiCalci />
+        </div>
+        <div>
+          <MoneyMoments />
+        </div>
+        <LoanTypesScroll />
+        <div className="mt-30 pl-10 pr-10 max-[425px]:pl-2 max-[425px]:pr-2">
+          <TrustBaba />
+        </div>
+
+        <div className="mt-10">
+          <LoanProcess />
+        </div>
+        <div className="mt-30">
+          <QuickEasy />
+          <HomeFooter />
+
+        </div>
+        <Footer />
+      </div>
+    </div>
+  );
+}
