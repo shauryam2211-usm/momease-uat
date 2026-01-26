@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="navbar-actions">
         <a href="#login" className="login-link">Login</a>
         <button className="signup-btn" onClick={handleJoinWaitlist}>
-          Sign up
+          Join Waitlist
         </button>
       </div>
       <button 

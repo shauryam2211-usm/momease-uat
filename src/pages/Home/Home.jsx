@@ -4,6 +4,8 @@ import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import { waitlistService } from '../../services/api'
 import logoImage from '../../assets/images/momease-logo.jpeg'
+import motherImage from '../../assets/images/mother.avif'
+import bottleImage from '../../assets/images/bottle.png'
 import './Home.css'
 
 const Home = () => {
@@ -32,6 +34,16 @@ const Home = () => {
 
   return (
     <div className="home-wrapper">
+      {/* Mother Image Background */}
+      <div className="mother-image-container">
+        <img src={motherImage} alt="Mother with baby" className="mother-image" />
+      </div>
+
+      {/* Bottle Image Background */}
+      <div className="bottle-image-container">
+        <img src={bottleImage} alt="Momease Smart Baby Bottle" className="bottle-background-image" />
+      </div>
+
       {/* Header with Logo and Navbar */}
       <header className="site-header">
         <div className="header-container">

@@ -5,6 +5,126 @@
   overflow: hidden;
 }
 
+.mother-image-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.mother-image {
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  max-height: 80vh;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.15;
+  filter: blur(1px);
+  margin: 0 auto;
+}
+
+.bottle-image-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bottle-background-image {
+  width: auto;
+  height: auto;
+  max-width: 600px;
+  max-height: 70vh;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.12;
+  filter: blur(1px);
+  margin: 0 auto;
+}
+
+@media (max-width: 968px) {
+  .mother-image {
+    max-width: 600px;
+    max-height: 70vh;
+    opacity: 0.1;
+  }
+
+  .bottle-background-image {
+    max-width: 500px;
+    max-height: 60vh;
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 640px) {
+  .mother-image-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  .mother-image {
+    width: 85%;
+    max-width: 100%;
+    max-height: 60vh;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.08;
+    filter: blur(2px);
+    margin: 0 auto;
+  }
+
+  .bottle-image-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .bottle-background-image {
+    width: 80%;
+    max-width: 100%;
+    max-height: 50vh;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.08;
+    filter: blur(2px);
+    margin: 0 auto;
+  }
+}
+
 .home-wrapper::before {
   content: '';
   position: absolute;

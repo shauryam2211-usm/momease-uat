@@ -8,6 +8,13 @@
   z-index: 1;
 }
 
+@media (max-width: 640px) {
+  .hero {
+    min-height: 60vh;
+    padding: 2rem 1rem;
+  }
+}
+
 .hero-container {
   position: relative;
   z-index: 2;

@@ -15,8 +15,8 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-left">
             <h1 className="hero-title">
-              <span>Babies, not</span>
-              <span>babysitting.</span>
+              <span>Parenting made</span>
+              <span>easy.</span>
             </h1>
             <div className="hero-description">
               <p>Track feeding instantly with AI-powered monitoring.</p>
@@ -28,7 +28,7 @@ const Hero = () => {
                 className="btn btn-primary" 
                 onClick={handleJoinWaitlist}
               >
-                Sign up for free
+                Join Waitlist
               </button>
             </div>
           </div>
