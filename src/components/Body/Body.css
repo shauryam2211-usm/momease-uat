@@ -1,0 +1,29 @@
+/* Body Section Styles */
+.body-section {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add padding for fixed navbar in desktop view */
+@media (min-width: 769px) {
+  .body-section {
+    padding-top: 100px;
+  }
+}
+
+/* Add padding for fixed navbar in mobile view */
+@media (max-width: 768px) {
+  .body-section {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body-section {
+    padding-top: 70px;
+  }
+}
+
+/* Import styles from Home.css for sections */
+/* These styles are already defined in Home.css and will be inherited */

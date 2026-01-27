@@ -15,8 +15,7 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-left">
             <h1 className="hero-title">
-              <span>Parenting made</span>
-              <span>easy.</span>
+              <span>Parenting made easy.</span>
             </h1>
             <div className="hero-description">
               <p>Track feeding instantly with AI-powered monitoring.</p>

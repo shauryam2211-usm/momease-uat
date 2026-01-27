@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="footer-section">
             <h3>Contact</h3>
             <p>Email: info@momeaseinnovation.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
+            <p>Phone: +91 8882283654</p>
           </div>
         </div>
         <div className="footer-bottom">
