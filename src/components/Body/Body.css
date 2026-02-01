@@ -5,13 +5,6 @@
   z-index: 1;
 }
 
-/* Add padding for fixed navbar in desktop view */
-@media (min-width: 769px) {
-  .body-section {
-    padding-top: 100px;
-  }
-}
-
 /* Add padding for fixed navbar in mobile view */
 @media (max-width: 768px) {
   .body-section {

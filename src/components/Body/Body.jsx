@@ -61,7 +61,10 @@ const Carousel = () => {
       <div className="carousel-wrapper">
         <div 
           className="carousel-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={{ 
+            transform: `translateX(-${currentIndex * 100}%)`,
+            WebkitTransform: `translateX(-${currentIndex * 100}%)`
+          }}
         >
           {steps.map((step, index) => (
             <div key={index} className="carousel-slide">

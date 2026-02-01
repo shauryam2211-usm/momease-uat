@@ -117,6 +117,12 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
+      {isMenuOpen && (
+        <div 
+          className={`menu-backdrop ${isMenuOpen ? 'active' : ''}`} 
+          onClick={() => setIsMenuOpen(false)}
+        ></div>
+      )}
     </>
   )
 }
