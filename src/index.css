@@ -17,11 +17,16 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden;
-  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  overflow-y: visible; /* iOS Safari fix - allow vertical overflow for fixed navbar */
+  font-family: 'Comfortaa', 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, rgba(2, 55, 93, 0.98) 0%, rgba(1, 39, 66, 0.99) 100%);
+  /* iOS Safari fixes */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
 #root {

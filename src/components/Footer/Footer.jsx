@@ -1,5 +1,4 @@
 import './Footer.css'
-import logoImage from '../../assets/images/momease-logo.png'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -20,11 +19,13 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-brand">
-              <img src={logoImage} alt="Momease Logo" className="footer-logo" />
-              <div className="footer-brand-text">
-                <span className="logo-text">momease</span>
-                <span className="logo-tagline">Parenting Made Easy</span>
-              </div>
+              <span className="logo-icon">🧸</span>
+              <span className="logo-text">momease</span>
+              <span className="logo-tagline">
+                <span className="word-block word-1">Parenting</span>
+                <span className="word-block word-2">Made</span>
+                <span className="word-block word-3">Easy</span>
+              </span>
             </div>
             <p>AI-powered baby bottle that makes parenting effortless, one bottle at a time.</p>
           </div>

@@ -58,6 +58,14 @@ const Navbar = () => {
     }
   }
 
+  const handleJoinWaitlist = () => {
+    const waitlistSection = document.getElementById('waitlist')
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMenuOpen(false)
+  }
+
   return (
     <>
       <nav className="navbar">
@@ -66,7 +74,7 @@ const Navbar = () => {
           <img src={logoImage} alt="Momease Logo - Parenting Made Easy" className="logo-image" />
         </div>
 
-        {/* Navigation Menu - Right Side */}
+        {/* Navigation Menu - Center/Right */}
         <div className="navbar-content">
           <button 
             className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
@@ -115,6 +123,16 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
+          
+          {/* Actions - Right Side */}
+          <div className="navbar-actions">
+            <button 
+              className="btn-cta" 
+              onClick={handleJoinWaitlist}
+            >
+              Join Waitlist
+            </button>
+          </div>
         </div>
       </nav>
       {isMenuOpen && (

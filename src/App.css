@@ -4,4 +4,8 @@
   padding: 0 !important;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh; /* iOS Safari viewport fix */
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible; /* iOS Safari fix - allow vertical overflow for fixed navbar */
 }

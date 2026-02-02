@@ -3,6 +3,10 @@ import Hero from '../Hero/Hero'
 import { waitlistService } from '../../services/api'
 import motherImage from '../../assets/images/mother.avif'
 import bottleImage from '../../assets/images/bottle.png'
+import solutionImage from '../../assets/images/solution.jpeg'
+import bottleDemoImage from '../../assets/images/bottledemo.png'
+import worksImage from '../../assets/images/works.jpeg'
+import parentingImage from '../../assets/images/parenting.jpeg'
 import './Body.css'
 
 const Carousel = () => {
@@ -61,10 +65,7 @@ const Carousel = () => {
       <div className="carousel-wrapper">
         <div 
           className="carousel-track"
-          style={{ 
-            transform: `translateX(-${currentIndex * 100}%)`,
-            WebkitTransform: `translateX(-${currentIndex * 100}%)`
-          }}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {steps.map((step, index) => (
             <div key={index} className="carousel-slide">
@@ -128,22 +129,36 @@ const Body = () => {
       {/* Challenges Section */}
       <section id="challenges" className="section challenges-section">
         <div className="container">
-          <h2 className="section-title">Parenting Challenges</h2>
-          <div className="challenges-grid">
-            <div className="challenge-card">
-              <div className="challenge-icon">⏰</div>
-              <h3>Tracking Feeding Times</h3>
-              <p>Never miss a feeding schedule or wonder when your baby last ate.</p>
+          <h2 className="section-title">
+            <span className="word-block word-1">Parenting</span>
+            <span className="word-block word-2">Challenges</span>
+          </h2>
+          <div className="challenges-content-wrapper">
+            <div className="challenges-image-container">
+              <img src={parentingImage} alt="Parenting challenges - exhausted parents with baby" className="challenges-image" />
             </div>
-            <div className="challenge-card">
-              <div className="challenge-icon">🌡️</div>
-              <h3>Milk Safety Concerns</h3>
-              <p>Worrying about milk temperature and freshness throughout the day.</p>
-            </div>
-            <div className="challenge-card">
-              <div className="challenge-icon">🧼</div>
-              <h3>Hygiene Management</h3>
-              <p>Ensuring bottles are always clean and sanitized properly.</p>
+            <div className="challenges-text-content">
+              <div className="challenge-item">
+                <div className="challenge-icon-text">⏰</div>
+                <div className="challenge-text">
+                  <h3>Tracking Feeding Times</h3>
+                  <p>Never miss a feeding schedule or wonder when your baby last ate.</p>
+                </div>
+              </div>
+              <div className="challenge-item">
+                <div className="challenge-icon-text">🌡️</div>
+                <div className="challenge-text">
+                  <h3>Milk Safety Concerns</h3>
+                  <p>Worrying about milk temperature and freshness throughout the day.</p>
+                </div>
+              </div>
+              <div className="challenge-item">
+                <div className="challenge-icon-text">🧼</div>
+                <div className="challenge-text">
+                  <h3>Hygiene Management</h3>
+                  <p>Ensuring bottles are always clean and sanitized properly.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -151,8 +166,14 @@ const Body = () => {
 
       {/* Solution Section */}
       <section id="solution" className="section solution-section">
+        <div className="solution-background-image">
+          <img src={solutionImage} alt="Solution background" className="solution-bg-img" />
+        </div>
         <div className="container">
-          <h2 className="section-title">Our Solution</h2>
+          <h2 className="section-title">
+            <span className="word-block word-1">Our</span>
+            <span className="word-block word-2">Solution</span>
+          </h2>
           <div className="solution-content">
             <div className="solution-text">
               <h3>AI-Powered Smart Baby Bottle</h3>
@@ -162,10 +183,10 @@ const Body = () => {
                 through smart sensors and mobile app integration.
               </p>
               <ul className="solution-features">
-                <li className="feeding-tracking">✓ Real-time feeding tracking</li>
+                <li>✓ Real-time feeding tracking</li>
                 <li className="temperature-monitoring">✓ Temperature monitoring</li>
-                <li className="hygiene-reminders">✓ Hygiene reminders</li>
-                <li className="app-integration">✓ Mobile app integration</li>
+                <li>✓ Hygiene reminders</li>
+                <li>✓ Mobile app integration</li>
               </ul>
             </div>
           </div>
@@ -175,31 +196,43 @@ const Body = () => {
       {/* Features Section */}
       <section id="features" className="section features-section">
         <div className="container">
-          <h2 className="section-title">Key Features</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <h3>📱 Smart Tracking</h3>
-              <p>Automatic feeding time and quantity tracking with detailed analytics.</p>
+          <h2 className="section-title">
+            <span className="word-block word-1">Key</span>
+            <span className="word-block word-2">Features</span>
+          </h2>
+          <div className="features-content-wrapper">
+            <div className="features-grid">
+              <div className="feature-card">
+                <div className="feature-icon-circle">
+                  <span className="feature-icon">📱</span>
+                </div>
+                <h3>Smart Tracking</h3>
+                <p>Automatic feeding time and quantity tracking with detailed analytics.</p>
+              </div>
+              <div className="feature-card">
+                <div className="feature-icon-circle">
+                  <span className="feature-icon">🌡️</span>
+                </div>
+                <h3>Temperature Control</h3>
+                <p>Real-time temperature monitoring to ensure milk is always at the perfect temperature.</p>
+              </div>
+              <div className="feature-card">
+                <div className="feature-icon-circle">
+                  <span className="feature-icon">🧼</span>
+                </div>
+                <h3>Hygiene Monitoring</h3>
+                <p>Smart reminders and tracking to maintain bottle cleanliness and safety.</p>
+              </div>
+              <div className="feature-card">
+                <div className="feature-icon-circle">
+                  <span className="feature-icon">📊</span>
+                </div>
+                <h3>Analytics Dashboard</h3>
+                <p>Comprehensive insights into your baby's feeding patterns and habits.</p>
+              </div>
             </div>
-            <div className="feature-card">
-              <h3>🌡️ Temperature Control</h3>
-              <p>Real-time temperature monitoring to ensure milk is always at the perfect temperature.</p>
-            </div>
-            <div className="feature-card">
-              <h3>🧼 Hygiene Monitoring</h3>
-              <p>Smart reminders and tracking to maintain bottle cleanliness and safety.</p>
-            </div>
-            <div className="feature-card">
-              <h3>📊 Analytics Dashboard</h3>
-              <p>Comprehensive insights into your baby's feeding patterns and habits.</p>
-            </div>
-            <div className="feature-card">
-              <h3>🔔 Smart Notifications</h3>
-              <p>Get timely reminders for feeding times, hygiene checks, and more.</p>
-            </div>
-            <div className="feature-card">
-              <h3>🔋 Long Battery Life</h3>
-              <p>Extended battery life ensures your bottle is always ready when you need it.</p>
+            <div className="features-bottle-image">
+              <img src={bottleDemoImage} alt="Momease Smart Baby Bottle" className="bottle-demo-img" />
             </div>
           </div>
         </div>
@@ -208,15 +241,28 @@ const Body = () => {
       {/* How It Works Section */}
       <section id="how-it-works" className="section how-it-works-section">
         <div className="container">
-          <h2 className="section-title">How It Works</h2>
-          <Carousel />
+          <h2 className="section-title">
+            <span className="word-block word-1">How</span>
+            <span className="word-block word-2">It</span>
+            <span className="word-block word-3">Works</span>
+          </h2>
+          <div className="how-it-works-content">
+            <div className="how-it-works-image-container">
+              <img src={worksImage} alt="How It Works - Set Up App, Connect to Bottle, Monitor & Relax" className="how-it-works-image" />
+            </div>
+            <Carousel />
+          </div>
         </div>
       </section>
 
       {/* Waitlist Section */}
       <section id="waitlist" className="section waitlist-section">
           <div className="container">
-            <h2 className="section-title">Join the Waitlist</h2>
+            <h2 className="section-title">
+              <span className="word-block word-1">Join</span>
+              <span className="word-block word-2">the</span>
+              <span className="word-block word-3">Waitlist</span>
+            </h2>
             <p className="section-subtitle">Be among the first to experience smart parenting</p>
             <div className="waitlist-content">
               <div className="waitlist-form-container">

@@ -1,5 +1,5 @@
 import './Hero.css'
-import bottleImage from '../../assets/images/bottle.png'
+import bottleImage from '../../assets/images/bottledemo.png'
 
 const Hero = () => {
   const handleJoinWaitlist = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-left">
             <h1 className="hero-title">
-              <span>Parenting made easy.</span>
+              Parenting made easy.
             </h1>
             <div className="hero-description">
               <p>Track feeding instantly with AI-powered monitoring.</p>
