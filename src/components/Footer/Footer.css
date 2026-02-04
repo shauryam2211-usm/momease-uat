@@ -29,7 +29,10 @@
 }
 
 .footer-brand .logo-icon {
-  font-size: 1.5rem;
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-brand .logo-text {

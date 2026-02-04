@@ -1,3 +1,4 @@
+import momeaseLogo from '../../assets/images/momease-logo.png'
 import './Footer.css'
 
 const Footer = () => {
@@ -19,7 +20,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-brand">
-              <span className="logo-icon">🧸</span>
+              <img src={momeaseLogo} alt="momease" className="logo-icon" />
               <span className="logo-text">momease</span>
               <span className="logo-tagline">
                 <span className="word-block word-1">Parenting</span>
