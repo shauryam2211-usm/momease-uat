@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react'
 import Hero from '../Hero/Hero'
-import { waitlistService } from '../../services/api'
 import motherImage from '../../assets/images/mother.avif'
+
+// Google Form integration
+// Form: https://docs.google.com/forms/d/e/1FAIpQLSc9v46o-gr8TChB6zDbYuDGe6AfbdkGfOM6PeNoeZWJDYfRGg/viewform
+// Get entry IDs: Open form in edit mode → ⋮ → "Get pre-filled link" → fill Name & Email → Get link → copy entry.xxx values from URL
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc9v46o-gr8TChB6zDbYuDGe6AfbdkGfOM6PeNoeZWJDYfRGg/formResponse'
+const GOOGLE_FORM_FIELDS = {
+  name: 'entry.1910709853',
+  email: 'entry.1391614403',
+}
 import bottleImage from '../../assets/images/bottle.png'
 import solutionImage from '../../assets/images/solution.jpeg'
 import bottleDemoImage from '../../assets/images/bottledemo.png'
@@ -100,12 +108,26 @@ const Body = () => {
 
   const handleWaitlistSubmit = async (e) => {
     e.preventDefault()
+    const trimmedName = name.trim()
+    const trimmedEmail = email.trim()
+    if (!trimmedName || !trimmedEmail) {
+      setMessage('Please enter both name and email.')
+      return
+    }
     setIsLoading(true)
     setMessage('')
 
+    const formData = new FormData()
+    formData.append(GOOGLE_FORM_FIELDS.name, trimmedName)
+    formData.append(GOOGLE_FORM_FIELDS.email, trimmedEmail)
+
     try {
-      await waitlistService.joinWaitlist(email, name)
-      setMessage('Successfully joined the waitlist!')
+      await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      })
+      setMessage("🎉 You're on the waitlist!")
       setEmail('')
       setName('')
     } catch (error) {
@@ -273,6 +295,7 @@ const Body = () => {
                       placeholder="Your Name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      required
                       className="form-input"
                     />
                   </div>
@@ -294,7 +317,7 @@ const Body = () => {
                     {isLoading ? 'Joining...' : 'Join the Waitlist'}
                   </button>
                   {message && (
-                    <p className={`form-message ${message.includes('Error') ? 'error' : 'success'}`}>
+                    <p className={`form-message ${message.includes('Error') || message.includes('Please enter') ? 'error' : 'success'}`}>
                       {message}
                     </p>
                   )}
