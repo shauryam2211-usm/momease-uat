@@ -7,7 +7,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
-    const sections = ['challenges', 'solution', 'features', 'how-it-works']
+    const sections = ['challenges', 'solution', 'features', 'how-it-works', 'waitlist']
     
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200 // Offset for navbar and some padding
@@ -42,18 +42,20 @@ const Navbar = () => {
   }, [])
 
   const handleNavClick = (e, href) => {
-    e.preventDefault()
-    if (href.startsWith('#')) {
-      const section = document.querySelector(href)
-      if (section) {
-        const navbarHeight = 80 // Approximate navbar height
-        const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset
-        const offsetPosition = sectionPosition - navbarHeight
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+    setIsMenuOpen(false)
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
+    if (href && href.startsWith('#')) {
+      const sectionId = href.slice(1)
+      const section = document.getElementById(sectionId)
+      if (section) {
+        // Delay allows menu to close before scroll (Android & iOS Safari/Chrome)
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 150)
       }
     }
   }
@@ -89,7 +91,7 @@ const Navbar = () => {
             <li>
               <a 
                 href="#challenges" 
-                onClick={(e) => { handleNavClick(e, '#challenges'); setIsMenuOpen(false); }}
+                onClick={(e) => handleNavClick(e, '#challenges')}
                 className={activeSection === 'challenges' ? 'active' : ''}
               >
                 Challenges
@@ -98,7 +100,7 @@ const Navbar = () => {
             <li>
               <a 
                 href="#solution" 
-                onClick={(e) => { handleNavClick(e, '#solution'); setIsMenuOpen(false); }}
+                onClick={(e) => handleNavClick(e, '#solution')}
                 className={activeSection === 'solution' ? 'active' : ''}
               >
                 Solution
@@ -107,7 +109,7 @@ const Navbar = () => {
             <li>
               <a 
                 href="#features" 
-                onClick={(e) => { handleNavClick(e, '#features'); setIsMenuOpen(false); }}
+                onClick={(e) => handleNavClick(e, '#features')}
                 className={activeSection === 'features' ? 'active' : ''}
               >
                 Features
@@ -116,10 +118,19 @@ const Navbar = () => {
             <li>
               <a 
                 href="#how-it-works" 
-                onClick={(e) => { handleNavClick(e, '#how-it-works'); setIsMenuOpen(false); }}
+                onClick={(e) => handleNavClick(e, '#how-it-works')}
                 className={activeSection === 'how-it-works' ? 'active' : ''}
               >
                 How It Works
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#waitlist" 
+                onClick={(e) => handleNavClick(e, '#waitlist')}
+                className={activeSection === 'waitlist' ? 'active' : ''}
+              >
+                Join Waitlist
               </a>
             </li>
           </ul>

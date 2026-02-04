@@ -164,7 +164,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: none;
@@ -174,7 +174,7 @@
 .btn-primary {
   background: linear-gradient(135deg, #81D4FA 0%, #0288D1 100%);
   color: rgba(2, 55, 93, 0.95);
-  border-radius: 16px;
+  border-radius: 50px;
   padding: 1.1rem 3rem;
   font-size: 1.15rem;
   font-family: 'Fredoka', 'Comfortaa', sans-serif;
@@ -197,7 +197,7 @@
   right: 0;
   height: 100%;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-  border-radius: 16px;
+  border-radius: 50px;
   pointer-events: none;
 }
 

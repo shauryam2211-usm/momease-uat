@@ -1,6 +1,7 @@
 .footer {
   background: linear-gradient(135deg, rgba(2, 55, 93, 0.98) 0%, rgba(1, 39, 66, 0.99) 100%);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: rgba(255, 255, 255, 0.9);
   padding: 3rem 2rem 1rem;
   margin-top: auto;
@@ -50,7 +51,7 @@
 .footer-brand .logo-tagline .word-block {
   display: inline-block;
   padding: 0.25rem 0.6rem;
-  border-radius: 8px;
+  border-radius: 50px;
   font-weight: 700;
   position: relative;
   transform-style: preserve-3d;
@@ -69,7 +70,7 @@
   right: 0;
   bottom: 0;
   background: inherit;
-  border-radius: 8px;
+  border-radius: 50px;
   transform: translateZ(-6px) translateY(6px);
   opacity: 0.6;
   filter: blur(2px);
@@ -83,7 +84,7 @@
   right: 0;
   height: 100%;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-  border-radius: 8px;
+  border-radius: 50px;
   pointer-events: none;
 }
 
@@ -100,13 +101,13 @@
 }
 
 .footer-brand .logo-tagline .word-2 {
-  background: linear-gradient(135deg, #50B0E0 0%, #2A6A8C 100%);
+  background: linear-gradient(135deg, #81D4FA 0%, #0288D1 100%);
   color: rgba(255, 255, 255, 0.95);
   box-shadow: 
-    0 6px 0 rgba(42, 106, 140, 0.7),
+    0 6px 0 rgba(2, 55, 93, 0.8),
     0 8px 15px rgba(0, 0, 0, 0.4),
     inset 0 2px 0 rgba(255, 255, 255, 0.3);
-  border: 2px solid rgba(42, 106, 140, 0.7);
+  border: 2px solid rgba(2, 55, 93, 0.7);
   transform: perspective(500px) rotateX(-8deg) rotateY(2deg);
 }
 
@@ -178,7 +179,7 @@
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
-  font-family: 'Lora', serif;
+  font-family: 'Comfortaa', 'Fredoka', sans-serif;
 }
 
 @media (max-width: 768px) {

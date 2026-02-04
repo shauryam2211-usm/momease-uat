@@ -1,3 +1,22 @@
+/* Color Theme Variables */
+:root {
+  --color-primary-dark: rgba(2, 55, 93, 0.98);
+  --color-primary-darker: rgba(1, 39, 66, 0.99);
+  --color-accent-light: #81D4FA;
+  --color-accent-medium: #0288D1;
+  --color-accent-dark: rgba(2, 55, 93, 0.95);
+  --color-border: rgba(129, 212, 250, 0.3);
+  --color-border-strong: rgba(129, 212, 250, 0.5);
+  --color-text-light: rgba(255, 255, 255, 0.95);
+  --color-text-muted: rgba(255, 255, 255, 0.8);
+  --color-text-on-accent: rgba(2, 55, 93, 0.95);
+  --color-shadow: rgba(2, 136, 209, 0.2);
+  --color-section-bg: linear-gradient(135deg, rgba(2, 55, 93, 0.95) 0%, rgba(1, 39, 66, 0.98) 100%);
+  --color-button-gradient: linear-gradient(135deg, #81D4FA 0%, #0288D1 100%);
+  --font-primary: 'Fredoka', 'Comfortaa', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Comfortaa', 'Fredoka', sans-serif;
+}
+
 /* Global responsive styles - Reset all margins and padding */
 *,
 *::before,
@@ -11,6 +30,7 @@ html {
   font-size: 16px;
   margin: 0 !important;
   padding: 0 !important;
+  scroll-behavior: smooth;
 }
 
 body {
