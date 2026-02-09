@@ -83,6 +83,10 @@
   position: relative;
   overflow-x: hidden; /* Only hide horizontal overflow, not vertical */
   overflow-y: visible; /* Allow vertical overflow for fixed navbar */
+  outline: none;
+  border: none;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .mother-image-container {
@@ -302,7 +306,8 @@
     padding: 0;
     width: 100%;
     max-width: 100%;
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -312,8 +317,10 @@
     overflow-x: hidden;
     visibility: visible;
     opacity: 1;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .header-container {
@@ -544,9 +551,17 @@
 .challenges-section,
 .solution-section,
 .features-section,
-.how-it-works-section,
-.waitlist-section {
+.how-it-works-section {
   padding: 6rem 0 8rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.waitlist-section {
+  padding: 6rem 0 0 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1041,8 +1056,9 @@
   }
 
   .waitlist-section {
-    padding: 4rem 0;
+    padding: 4rem 0 0 0;
     border-radius: 0;
+    margin-bottom: 0 !important;
   }
 
   .container {
@@ -1093,7 +1109,7 @@
   }
 
   .waitlist-section {
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0 0 0;
     margin-bottom: 0 !important;
     border-radius: 0;
   }
@@ -1237,7 +1253,7 @@
   }
 
   .waitlist-section {
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0 0 0;
     margin-bottom: 0 !important;
     border-radius: 0;
   }
@@ -3646,7 +3662,8 @@
     padding: 0;
     width: 100%;
     max-width: 100%;
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -3654,8 +3671,10 @@
     background: transparent;
     visibility: visible;
     opacity: 1;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .header-container {
@@ -3858,8 +3877,8 @@
   .how-it-works-section,
   .waitlist-section {
     padding-top: 32px !important;
-    padding-bottom: 32px !important;
-    margin-bottom: 48px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   /* CONTAINER SPACING */
@@ -4058,8 +4077,8 @@
   .how-it-works-section,
   .waitlist-section {
     padding-top: 32px !important;
-    padding-bottom: 32px !important;
-    margin-bottom: 48px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .container {

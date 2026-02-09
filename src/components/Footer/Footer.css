@@ -4,8 +4,8 @@
   -webkit-backdrop-filter: blur(10px);
   color: var(--color-text-body);
   padding: 3rem 2rem 1rem;
-  margin-top: auto;
-  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+  border-top: none;
 }
 
 .footer-container {

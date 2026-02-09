@@ -8,4 +8,6 @@
   position: relative;
   overflow-x: hidden;
   overflow-y: visible; /* iOS Safari fix - allow vertical overflow for fixed navbar */
+  outline: none;
+  border: none;
 }
