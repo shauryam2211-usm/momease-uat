@@ -1,19 +1,17 @@
 /* Initial State - Full Width, Not Fixed, Transparent */
 .navbar {
-  background: linear-gradient(135deg, rgba(6, 20, 40, 0.3) 0%, rgba(11, 42, 68, 0.25) 100%);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  /* Remove backdrop-filter from navbar itself - use ::before instead */
+  background: transparent;
   padding: 1rem 0;
   padding-top: calc(1rem + env(safe-area-inset-top));
   box-shadow: none;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-  z-index: 99999;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  z-index: 1;
   border-bottom: 1px solid rgba(158, 219, 255, 0.1);
   display: flex;
   align-items: center;
@@ -38,19 +36,32 @@
   perspective: 1000;
 }
 
+/* Glass effect using ::before pseudo-element (iOS safe) */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6, 20, 40, 0.85) 0%, rgba(11, 42, 68, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: -1;
+  border-radius: 0;
+  pointer-events: none;
+}
+
 /* Scrolled State - Fixed, Centered, Pill Shape, Glassmorphism */
 .navbar.scrolled {
-  position: fixed;
-  top: 1rem;
-  left: 50%;
-  right: auto;
-  transform: translate3d(-50%, 0, 0) scale(0.98);
-  -webkit-transform: translate3d(-50%, 0, 0) scale(0.98);
+  position: fixed !important;
+  top: 1rem !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: scale(0.98) !important;
+  -webkit-transform: scale(0.98) !important;
   width: 85%;
   max-width: 1200px;
-  background: rgba(6, 20, 40, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: transparent;
   border: 1px solid rgba(158, 219, 255, 0.2);
   border-radius: 50px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
@@ -59,6 +70,24 @@
   padding: 0.5rem 2rem;
   padding-top: calc(0.5rem + env(safe-area-inset-top));
   min-height: 56px;
+  /* iOS FIX */
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  z-index: 1000 !important;
+  box-sizing: border-box;
+}
+
+/* Glass effect for scrolled state using ::before (iOS safe) */
+.navbar.scrolled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 20, 40, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: -1;
+  border-radius: 50px;
+  pointer-events: none;
 }
 
 /* Logo Section - Left Side */
@@ -362,14 +391,17 @@
   .navbar.scrolled {
     position: fixed !important;
     top: 1rem !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate3d(-50%, 0, 0) scale(0.98) !important;
-    -webkit-transform: translate3d(-50%, 0, 0) scale(0.98) !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scale(0.98) !important;
+    -webkit-transform: scale(0.98) !important;
     width: 85% !important;
     max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     background: rgba(6, 20, 40, 0.75) !important;
     backdrop-filter: blur(20px) !important;
+    box-sizing: border-box !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(158, 219, 255, 0.2) !important;
     border-radius: 50px !important;
@@ -539,14 +571,17 @@
   .navbar.scrolled {
     position: fixed !important;
     top: 0.75rem !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate3d(-50%, 0, 0) scale(0.98) !important;
-    -webkit-transform: translate3d(-50%, 0, 0) scale(0.98) !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scale(0.98) !important;
+    -webkit-transform: scale(0.98) !important;
     width: 92% !important;
     max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     background: rgba(6, 20, 40, 0.8) !important;
     backdrop-filter: blur(20px) !important;
+    box-sizing: border-box !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(158, 219, 255, 0.25) !important;
     border-radius: 50px !important;
@@ -907,12 +942,15 @@
   .navbar.scrolled {
     position: fixed !important;
     top: 1rem !important;
-    left: 50% !important;
-    right: auto !important;
-    -webkit-transform: translate3d(-50%, 0, 0) scale(0.98) !important;
-    transform: translate3d(-50%, 0, 0) scale(0.98) !important;
+    left: 0 !important;
+    right: 0 !important;
+    -webkit-transform: scale(0.98) !important;
+    transform: scale(0.98) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
+    box-sizing: border-box !important;
   }
 
   @media (max-width: 768px) {
@@ -1011,8 +1049,13 @@
   }
 
   .navbar.scrolled {
-    -webkit-transform: translate3d(-50%, 0, 0) scale(0.98) !important;
-    transform: translate3d(-50%, 0, 0) scale(0.98) !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    -webkit-transform: scale(0.98) !important;
+    transform: scale(0.98) !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -1058,14 +1101,17 @@
   .navbar.scrolled {
     position: fixed !important;
     top: 0.5rem !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate3d(-50%, 0, 0) scale(0.98) !important;
-    -webkit-transform: translate3d(-50%, 0, 0) scale(0.98) !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scale(0.98) !important;
+    -webkit-transform: scale(0.98) !important;
     width: 92% !important;
     max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     background: rgba(6, 20, 40, 0.85) !important;
     backdrop-filter: blur(20px) !important;
+    box-sizing: border-box !important;
     -webkit-backdrop-filter: blur(20px) !important;
     border: 1px solid rgba(158, 219, 255, 0.3) !important;
     border-radius: 50px !important;

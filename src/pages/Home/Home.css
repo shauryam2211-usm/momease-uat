@@ -81,12 +81,19 @@
   min-height: 100vh;
   min-height: 100dvh; /* iOS Safari viewport fix */
   position: relative;
-  overflow-x: hidden; /* Only hide horizontal overflow, not vertical */
+  overflow-x: hidden !important; /* Only hide horizontal overflow, not vertical */
   overflow-y: visible; /* Allow vertical overflow for fixed navbar */
   outline: none;
   border: none;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* CRITICAL: Remove any transforms/filters that break fixed positioning on iOS */
+  transform: none !important;
+  -webkit-transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .mother-image-container {
@@ -94,7 +101,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -120,7 +127,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -165,7 +172,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -191,7 +198,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -233,28 +240,27 @@
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 99999;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
   padding: 0;
   padding-top: 0.75rem;
-  background: transparent;
-  width: 100%;
-  max-width: 100vw;
+  background: linear-gradient(135deg, rgba(6, 20, 40, 0.85) 0%, rgba(11, 42, 68, 0.8) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   margin: 0;
-  overflow: visible !important; /* iOS Safari fix - don't hide overflow */
+  overflow: visible !important;
   box-sizing: border-box;
   visibility: visible;
   opacity: 1;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  /* iOS Safari fixes */
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-  position: -webkit-sticky;
-  position: sticky;
+  /* iOS FIX - Critical for fixed positioning */
+  -webkit-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform;
 }
 
 .header-container {
@@ -272,17 +278,25 @@
   padding: 0;
   visibility: visible;
   opacity: 1;
+  background: transparent;
 }
 
 /* Desktop View - Ensure navbar is visible */
 @media (min-width: 769px) {
   .site-header {
-    position: fixed;
-    top: 0;
-    z-index: 99999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
     visibility: visible;
     opacity: 1;
     display: block;
+    /* iOS FIX */
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
   }
 
   .header-container {
@@ -304,23 +318,24 @@
 @media (max-width: 768px) {
   .site-header {
     padding: 0;
-    width: 100%;
-    max-width: 100%;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
     background: transparent;
     margin: 0;
     overflow-x: hidden;
     visibility: visible;
     opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    /* iOS FIX - Critical */
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    will-change: transform;
   }
 
   .header-container {
@@ -340,13 +355,18 @@
 @media (max-width: 1024px) {
   .site-header {
     padding: 0;
-    width: 100vw;
-    max-width: 100vw;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99999;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    /* iOS FIX */
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
     visibility: visible;
     opacity: 1;
     -webkit-transform: translateZ(0);

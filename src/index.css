@@ -88,8 +88,11 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Hide scrollbar but keep functionality */
@@ -106,7 +109,7 @@ html {
 body {
   margin: 0 !important;
   padding: 0 !important;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   overflow-y: visible;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -118,11 +121,18 @@ body {
   position: relative;
   outline: none;
   border: none;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 #root {
   margin: 0 !important;
   padding: 0 !important;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
 }
 
 /* Prevent horizontal scroll on mobile */
