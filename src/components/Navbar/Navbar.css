@@ -696,19 +696,32 @@
     border: none !important;
     -webkit-touch-callout: none !important;
     list-style: none !important;
-    display: flex !important;
+    display: none !important;
     align-items: center !important;
     justify-content: flex-start !important;
     box-sizing: border-box !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Hide sidebar when navbar is scrolled (unless active) */
+  .navbar.scrolled .navbar-menu:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translate3d(100%, 0, 0) !important;
+    -webkit-transform: translate3d(100%, 0, 0) !important;
   }
 
   .navbar-menu.active {
+    display: flex !important;
     transform: translate3d(0, 0, 0) !important;
     -webkit-transform: translate3d(0, 0, 0) !important;
     visibility: visible !important;
     opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .navbar-menu.active li {
@@ -984,11 +997,29 @@
     transform: translate3d(100%, 0, 0) !important;
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Hide sidebar when navbar is scrolled (unless active) */
+  .navbar.scrolled .navbar-menu:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    -webkit-transform: translate3d(100%, 0, 0) !important;
+    transform: translate3d(100%, 0, 0) !important;
   }
 
   .navbar-menu.active {
+    display: flex !important;
     -webkit-transform: translate3d(0, 0, 0) !important;
     transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .mobile-menu-toggle {
@@ -1237,19 +1268,32 @@
     border: none !important;
     -webkit-touch-callout: none !important;
     list-style: none !important;
-    display: flex !important;
+    display: none !important;
     align-items: center !important;
     justify-content: flex-start !important;
     box-sizing: border-box !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* Hide sidebar when navbar is scrolled (unless active) */
+  .navbar.scrolled .navbar-menu:not(.active) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translate3d(100%, 0, 0) !important;
+    -webkit-transform: translate3d(100%, 0, 0) !important;
   }
 
   .navbar-menu.active {
+    display: flex !important;
     transform: translate3d(0, 0, 0) !important;
     -webkit-transform: translate3d(0, 0, 0) !important;
     visibility: visible !important;
     opacity: 1 !important;
+    pointer-events: auto !important;
   }
 
   .navbar-menu.active li {
