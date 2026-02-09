@@ -3,6 +3,7 @@
   width: 100%;
   position: relative;
   z-index: 1;
+  background: linear-gradient(135deg, #061428 0%, #0B2A44 100%);
 }
 
 /* Add padding for fixed navbar in mobile view */

@@ -1,21 +1,57 @@
-/* Color Theme Variables */
+/* Calm Night-Time Smart Parenting – Global color system */
 :root {
-  --color-primary-dark: rgba(2, 55, 93, 0.98);
-  --color-primary-darker: rgba(1, 39, 66, 0.99);
-  --color-accent-light: #81D4FA;
-  --color-accent-medium: #0288D1;
-  --color-accent-dark: rgba(2, 55, 93, 0.95);
-  --color-border: rgba(129, 212, 250, 0.3);
-  --color-border-strong: rgba(129, 212, 250, 0.5);
-  --color-text-light: rgba(255, 255, 255, 0.95);
-  --color-text-muted: rgba(255, 255, 255, 0.8);
-  --color-text-on-accent: rgba(2, 55, 93, 0.95);
-  --color-shadow: rgba(2, 136, 209, 0.2);
-  --color-section-bg: linear-gradient(135deg, rgba(2, 55, 93, 0.95) 0%, rgba(1, 39, 66, 0.98) 100%);
-  --color-button-gradient: linear-gradient(135deg, #81D4FA 0%, #0288D1 100%);
+  /* Primary backgrounds */
+  --color-bg-deep-navy: #061428;
+  --color-bg-midnight: #0B2A44;
+
+  /* Primary UI & highlights */
+  --color-ui-primary: #5DBBFF;
+  --color-ui-glow: #9EDBFF;
+
+  /* Text */
+  --color-text-heading: #FFFFFF;
+  --color-text-body: #C7D2E0;
+  --color-text-muted: #8FA6C2;
+
+  /* Accents (use sparingly) */
+  --color-accent-baby: #FF8FB1;
+  --color-accent-success: #5EE6C5;
+
+  /* Derived – borders & shadows (palette only, no new colors) */
+  --color-border: rgba(158, 219, 255, 0.35);
+  --color-border-strong: rgba(158, 219, 255, 0.5);
+  --color-shadow-glow: rgba(93, 187, 255, 0.2);
+  --color-shadow-soft: rgba(0, 0, 0, 0.25);
+
+  /* Semantic – section backgrounds (rest of site – hero keeps its own in Hero.css) */
+  --color-section-bg-primary: var(--color-bg-deep-navy);
+  --color-section-bg-secondary: var(--color-bg-midnight);
+  --color-section-bg-gradient: linear-gradient(135deg, #061428 0%, #0B2A44 100%);
+
+  /* Buttons & pills */
+  --color-button-bg: var(--color-ui-primary);
+  --color-button-text: var(--color-text-heading);
+  --color-button-gradient: linear-gradient(135deg, #5DBBFF 0%, #9EDBFF 100%);
+  --color-gradient-glow-soft: linear-gradient(135deg, rgba(93, 187, 255, 0.2) 0%, rgba(158, 219, 255, 0.15) 100%);
+  --color-pill-bg: var(--color-ui-primary);
+  --color-pill-text: var(--color-bg-deep-navy);
+
+  /* Cards */
+  --color-card-bg: var(--color-bg-midnight);
+  --color-card-border: var(--color-border);
+  --color-card-text: var(--color-text-body);
+
+  /* Typography */
   --font-primary: 'Fredoka', 'Comfortaa', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Comfortaa', 'Fredoka', sans-serif;
 }
+
+/* --- Usage examples (Calm Night-Time Smart Parenting) --- */
+/* Body: color: var(--color-text-body); background: var(--color-section-bg-gradient); */
+/* Section backgrounds: background: var(--color-section-bg-primary); or var(--color-section-bg-secondary); or var(--color-section-bg-gradient); */
+/* Buttons: background: var(--color-button-gradient); color: var(--color-button-text); or var(--color-pill-text) for dark text on light button */
+/* Feature pills / tags: background: var(--color-pill-bg); color: var(--color-pill-text); */
+/* Cards: background: var(--color-card-bg); border: 1px solid var(--color-card-border); color: var(--color-card-text); */
 
 /* Global responsive styles - Reset all margins and padding */
 *,
@@ -37,14 +73,13 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden;
-  overflow-y: visible; /* iOS Safari fix - allow vertical overflow for fixed navbar */
-  font-family: 'Comfortaa', 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-y: visible;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  background: linear-gradient(135deg, rgba(2, 55, 93, 0.98) 0%, rgba(1, 39, 66, 0.99) 100%);
-  /* iOS Safari fixes */
+  color: var(--color-text-body);
+  background: var(--color-section-bg-gradient);
   -webkit-overflow-scrolling: touch;
   position: relative;
 }
@@ -58,6 +93,25 @@ body {
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
+    width: 100%;
+  }
+
+  * {
+    max-width: 100%;
+    word-wrap: break-word;
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+    width: 100%;
   }
 
   * {

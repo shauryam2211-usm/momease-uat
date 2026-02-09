@@ -22,11 +22,7 @@ const Footer = () => {
             <div className="footer-brand">
               <img src={momeaseLogo} alt="momease" className="logo-icon" />
               <span className="logo-text">momease</span>
-              <span className="logo-tagline">
-                <span className="word-block word-1">Parenting</span>
-                <span className="word-block word-2">Made</span>
-                <span className="word-block word-3">Easy</span>
-              </span>
+              <span className="logo-tagline">Parenting Made Easy</span>
             </div>
             <p>AI-powered baby bottle that makes parenting effortless, one bottle at a time.</p>
           </div>

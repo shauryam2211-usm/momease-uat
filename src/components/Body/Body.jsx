@@ -1,123 +1,97 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 import Hero from '../Hero/Hero'
+import AnnouncementBanner from '../AnnouncementBanner/AnnouncementBanner'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 import motherImage from '../../assets/images/mother.avif'
 import bottleImage from '../../assets/images/bottle.png'
 import solutionImage from '../../assets/images/solution.jpeg'
 import bottleDemoImage from '../../assets/images/bottledemo.png'
 import worksImage from '../../assets/images/works.jpeg'
-import parentingImage from '../../assets/images/parenting.jpeg'
+import challengeImage1 from '../../assets/images/c1.jpg'
+import challengeImage2 from '../../assets/images/c2.webp'
+import challengeImage3 from '../../assets/images/c3.jpg'
+import appintiImage from '../../assets/images/appinti.webp'
 import './Body.css'
 
-const Carousel = () => {
+const StepsGrid = ({ appImage, bottleImage, parentImage }) => {
+  const step1Ref = useScrollReveal({ threshold: 0.2 })
+  const step2Ref = useScrollReveal({ threshold: 0.2 })
+  const step3Ref = useScrollReveal({ threshold: 0.2 })
+
   const steps = [
     {
       number: 1,
-      title: 'Setup',
-      description: 'Download the app and connect your smart bottle via Bluetooth.'
+      title: 'App Setup',
+      description: 'Download the app and connect your smart bottle via Bluetooth.',
+      image: appImage,
+      ref: step1Ref
     },
     {
       number: 2,
-      title: 'Track',
-      description: 'The bottle automatically tracks feeding sessions and monitors milk safety.'
+      title: 'Bottle Connection',
+      description: 'Pair your bottle with the app in seconds.',
+      image: bottleImage,
+      ref: step2Ref
     },
     {
       number: 3,
-      title: 'Monitor',
-      description: 'View real-time data and insights through the mobile app dashboard.'
-    },
-    {
-      number: 4,
-      title: 'Enjoy',
-      description: 'Experience worry-free parenting with AI-powered assistance.'
+      title: 'Relaxed Monitoring',
+      description: 'Monitor feeding patterns effortlessly while you relax.',
+      image: parentImage,
+      ref: step3Ref
     }
   ]
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % steps.length)
-    }, 3000) // Rotate every 3 seconds
-
-    return () => clearInterval(interval)
-  }, [steps.length])
-
   return (
-    <div className="carousel-container">
-      {/* Desktop/Tablet: Show all 4 cards in grid */}
-      <div className="steps-grid">
-        {steps.map((step, index) => (
-          <div 
-            key={index} 
-            className={`step-card ${index === currentIndex ? 'active' : ''}`}
-          >
-            <div className="step">
-              <div className="step-number">{step.number}</div>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
+    <div className="how-it-works-steps">
+      {steps.map((step, index) => (
+        <React.Fragment key={index}>
+          <div ref={step.ref} className="how-it-works-step scroll-reveal-stagger">
+            <div className="how-it-works-step-image">
+              <img src={step.image} alt={step.title} />
+              <div className="how-it-works-step-overlay"></div>
+            </div>
+            <div className="how-it-works-step-content">
+              <p className="how-it-works-step-description">{step.description}</p>
             </div>
           </div>
-        ))}
-      </div>
-      
-      {/* Mobile: Carousel view */}
-      <div className="carousel-wrapper">
-        <div 
-          className="carousel-track"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {steps.map((step, index) => (
-            <div key={index} className="carousel-slide">
-              <div className="step">
-                <div className="step-number">{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
+          {index < steps.length - 1 && (
+            <div className="how-it-works-arrow">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 10L25 20L15 30" stroke="rgba(93, 187, 255, 0.6)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="carousel-indicators">
-        {steps.map((_, index) => (
-          <button
-            key={index}
-            className={`indicator ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => setCurrentIndex(index)}
-            aria-label={`Go to step ${index + 1}`}
-          />
-        ))}
-      </div>
+          )}
+        </React.Fragment>
+      ))}
     </div>
   )
 }
 
 const Body = () => {
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [message, setMessage] = useState('')
+  // Scroll reveal refs for section headings
+  const challengesBadgeRef = useScrollReveal({ threshold: 0.2 })
+  const solutionBadgeRef = useScrollReveal({ threshold: 0.2 })
+  const featuresTitleRef = useScrollReveal({ threshold: 0.2 })
+  const howItWorksTitleRef = useScrollReveal({ threshold: 0.2 })
+  const waitlistTitleRef = useScrollReveal({ threshold: 0.2 })
 
-  const handleWaitlistSubmit = (e) => {
-    e.preventDefault();
+  // Scroll reveal refs for feature cards
+  const feature1Ref = useScrollReveal({ threshold: 0.15 })
+  const feature2Ref = useScrollReveal({ threshold: 0.15 })
+  const feature3Ref = useScrollReveal({ threshold: 0.15 })
 
-    const trimmedName = name.trim();
-    const trimmedEmail = email.trim();
-    if (!trimmedName || !trimmedEmail) {
-      setMessage("Please enter both name and email.");
-      return;
-    }
+  // Scroll reveal refs for challenge cards
+  const challenge1Ref = useScrollReveal({ threshold: 0.15 })
+  const challenge2Ref = useScrollReveal({ threshold: 0.15 })
+  const challenge3Ref = useScrollReveal({ threshold: 0.15 })
 
-    const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc9v46o-gr8TChB6zDbYuDGe6AfbdkGfOM6PeNoeZWJDYfRGg/viewform";
-    const params = new URLSearchParams({
-      "entry.1910709853": trimmedName,
-      "entry.1391614403": trimmedEmail,
-    });
-    const prefilledUrl = `${baseUrl}?${params.toString()}`;
+  // Scroll reveal refs for CTA
+  const waitlistCtaRef = useScrollReveal({ threshold: 0.2 })
 
-    window.open(prefilledUrl, "_blank");
-    setMessage("Please submit the form in the new tab to join the waitlist.");
-    setName("");
-    setEmail("");
+  const handleJoinWaitlist = () => {
+    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc9v46o-gr8TChB6zDbYuDGe6AfbdkGfOM6PeNoeZWJDYfRGg/viewform";
+    window.open(googleFormUrl, "_blank");
   };
 
   return (
@@ -130,38 +104,46 @@ const Body = () => {
       {/* Hero Section */}
       <Hero />
 
+      {/* Announcement Banner */}
+      <AnnouncementBanner />
+
       {/* Challenges Section */}
       <section id="challenges" className="section challenges-section">
+        <div className="challenges-vignette"></div>
         <div className="container">
-          <h2 className="section-title">
-            <span className="word-block word-1">Parenting</span>
-            <span className="word-block word-2">Challenges</span>
-          </h2>
-          <div className="challenges-content-wrapper">
-            <div className="challenges-image-container">
-              <img src={parentingImage} alt="Parenting challenges - exhausted parents with baby" className="challenges-image" />
+          <div ref={challengesBadgeRef} className="challenges-badge scroll-reveal">Parenting Challenges</div>
+          <div className="challenges-grid">
+            <div ref={challenge1Ref} className="challenge-card scroll-reveal-stagger">
+              <div className="challenge-image-wrapper">
+                <img src={challengeImage1} alt="Parent struggling with feeding schedule" className="challenge-image" />
+                <div className="challenge-overlay"></div>
+              </div>
+              <div className="challenge-content">
+                <div className="challenge-icon">⏰</div>
+                <h3>Missed Feeding Times</h3>
+                <p>Never miss a feeding schedule or wonder when your baby last ate.</p>
+              </div>
             </div>
-            <div className="challenges-text-content">
-              <div className="challenge-item">
-                <div className="challenge-icon-text">⏰</div>
-                <div className="challenge-text">
-                  <h3>Tracking Feeding Times</h3>
-                  <p>Never miss a feeding schedule or wonder when your baby last ate.</p>
-                </div>
+            <div ref={challenge2Ref} className="challenge-card scroll-reveal-stagger">
+              <div className="challenge-image-wrapper">
+                <img src={challengeImage2} alt="Parent worried about milk temperature" className="challenge-image" />
+                <div className="challenge-overlay"></div>
               </div>
-              <div className="challenge-item">
-                <div className="challenge-icon-text">🌡️</div>
-                <div className="challenge-text">
-                  <h3>Milk Safety Concerns</h3>
-                  <p>Worrying about milk temperature and freshness throughout the day.</p>
-                </div>
+              <div className="challenge-content">
+                <div className="challenge-icon">🌡️</div>
+                <h3>Milk Temperature Anxiety</h3>
+                <p>Worrying about milk temperature and freshness throughout the day.</p>
               </div>
-              <div className="challenge-item">
-                <div className="challenge-icon-text">🧼</div>
-                <div className="challenge-text">
-                  <h3>Hygiene Management</h3>
-                  <p>Ensuring bottles are always clean and sanitized properly.</p>
-                </div>
+            </div>
+            <div ref={challenge3Ref} className="challenge-card scroll-reveal-stagger">
+              <div className="challenge-image-wrapper">
+                <img src={challengeImage3} alt="Parent managing bottle hygiene" className="challenge-image" />
+                <div className="challenge-overlay"></div>
+              </div>
+              <div className="challenge-content">
+                <div className="challenge-icon">🧼</div>
+                <h3>Hygiene & Cleanliness Stress</h3>
+                <p>Ensuring bottles are always clean and sanitized properly.</p>
               </div>
             </div>
           </div>
@@ -173,11 +155,9 @@ const Body = () => {
         <div className="solution-background-image">
           <img src={solutionImage} alt="Solution background" className="solution-bg-img" />
         </div>
+        <div className="solution-glow"></div>
         <div className="container">
-          <h2 className="section-title">
-            <span className="word-block word-1">Our</span>
-            <span className="word-block word-2">Solution</span>
-          </h2>
+          <div ref={solutionBadgeRef} className="solution-badge scroll-reveal">OUR SOLUTION</div>
           <div className="solution-content">
             <div className="solution-text">
               <h3>AI-Powered Smart Baby Bottle</h3>
@@ -187,11 +167,26 @@ const Body = () => {
                 through smart sensors and mobile app integration.
               </p>
               <ul className="solution-features">
-                <li>✓ Real-time feeding tracking</li>
-                <li className="temperature-monitoring">✓ Temperature monitoring</li>
-                <li>✓ Hygiene reminders</li>
-                <li>✓ Mobile app integration</li>
+                <li>
+                  <span className="feature-icon">📊</span>
+                  <span className="feature-text">Real-time feeding tracking</span>
+                </li>
+                <li>
+                  <span className="feature-icon">🌡️</span>
+                  <span className="feature-text">Temperature monitoring</span>
+                </li>
+                <li>
+                  <span className="feature-icon">🧼</span>
+                  <span className="feature-text">Hygiene reminders</span>
+                </li>
+                <li>
+                  <span className="feature-icon">📱</span>
+                  <span className="feature-text">Mobile app integration</span>
+                </li>
               </ul>
+            </div>
+            <div className="solution-visual">
+              <img src={bottleDemoImage} alt="Momease Smart Baby Bottle" className="solution-bottle-img" />
             </div>
           </div>
         </div>
@@ -200,43 +195,82 @@ const Body = () => {
       {/* Features Section */}
       <section id="features" className="section features-section">
         <div className="container">
-          <h2 className="section-title">
+          <h2 ref={featuresTitleRef} className="section-title scroll-reveal">
             <span className="word-block word-1">Key</span>
             <span className="word-block word-2">Features</span>
           </h2>
           <div className="features-content-wrapper">
             <div className="features-grid">
-              <div className="feature-card">
-                <div className="feature-icon-circle">
-                  <span className="feature-icon">📱</span>
+              <div ref={feature1Ref} className="feature-card scroll-reveal-stagger">
+                <div className="feature-visual">
+                  <div className="feature-visual-app">
+                    <div className="phone-device">
+                      <div className="phone-screen">
+                        <div className="app-icon"></div>
+                        <div className="sync-waves">
+                          <div className="sync-wave wave-out-1"></div>
+                          <div className="sync-wave wave-out-2"></div>
+                          <div className="sync-wave wave-out-3"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="connection-dots">
+                      <div className="dot dot-1"></div>
+                      <div className="dot dot-2"></div>
+                      <div className="dot dot-3"></div>
+                    </div>
+                  </div>
                 </div>
-                <h3>Smart Tracking</h3>
-                <p>Automatic feeding time and quantity tracking with detailed analytics.</p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon-circle">
-                  <span className="feature-icon">🌡️</span>
+                <div className="feature-card-content">
+                  <div className="feature-icon-circle">
+                    <span className="feature-icon">📊</span>
+                  </div>
+                  <h3>Smart Tracking</h3>
+                  <p>Automatic feeding time and quantity tracking with detailed analytics.</p>
                 </div>
-                <h3>Temperature Control</h3>
-                <p>Real-time temperature monitoring to ensure milk is always at the perfect temperature.</p>
               </div>
-              <div className="feature-card">
-                <div className="feature-icon-circle">
-                  <span className="feature-icon">🧼</span>
+              <div ref={feature2Ref} className="feature-card scroll-reveal-stagger">
+                <div className="feature-visual">
+                  <div className="feature-visual-temperature">
+                    <div className="temp-circle">
+                      <div className="temp-inner"></div>
+                      <div className="temp-waves">
+                        <div className="wave wave-1"></div>
+                        <div className="wave wave-2"></div>
+                        <div className="wave wave-3"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3>Hygiene Monitoring</h3>
-                <p>Smart reminders and tracking to maintain bottle cleanliness and safety.</p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon-circle">
-                  <span className="feature-icon">📊</span>
+                <div className="feature-card-content">
+                  <div className="feature-icon-circle">
+                    <span className="feature-icon">🌡️</span>
+                  </div>
+                  <h3>Temperature Control</h3>
+                  <p>Real-time temperature monitoring to ensure milk is always at the perfect temperature.</p>
                 </div>
-                <h3>Analytics Dashboard</h3>
-                <p>Comprehensive insights into your baby's feeding patterns and habits.</p>
               </div>
-            </div>
-            <div className="features-bottle-image">
-              <img src={bottleDemoImage} alt="Momease Smart Baby Bottle" className="bottle-demo-img" />
+              <div ref={feature3Ref} className="feature-card scroll-reveal-stagger">
+                <div className="feature-visual">
+                  <div className="feature-visual-hygiene">
+                    <div className="hygiene-shield">
+                      <div className="shield-icon">✓</div>
+                    </div>
+                    <div className="hygiene-particles">
+                      <div className="particle"></div>
+                      <div className="particle"></div>
+                      <div className="particle"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="feature-card-content">
+                  <div className="feature-icon-circle">
+                    <span className="feature-icon">🧼</span>
+                  </div>
+                  <h3>Hygiene Monitoring</h3>
+                  <p>Smart reminders and tracking to maintain bottle cleanliness and safety.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -245,68 +279,59 @@ const Body = () => {
       {/* How It Works Section */}
       <section id="how-it-works" className="section how-it-works-section">
         <div className="container">
-          <h2 className="section-title">
+          <h2 ref={howItWorksTitleRef} className="section-title scroll-reveal">
             <span className="word-block word-1">How</span>
             <span className="word-block word-2">It</span>
             <span className="word-block word-3">Works</span>
           </h2>
-          <div className="how-it-works-content">
-            <div className="how-it-works-image-container">
-              <img src={worksImage} alt="How It Works - Set Up App, Connect to Bottle, Monitor & Relax" className="how-it-works-image" />
-            </div>
-            <Carousel />
-          </div>
+          <StepsGrid 
+            appImage={appintiImage}
+            bottleImage={bottleDemoImage}
+            parentImage={motherImage}
+          />
         </div>
       </section>
 
       {/* Waitlist Section */}
       <section id="waitlist" className="section waitlist-section">
           <div className="container">
-            <h2 className="section-title">
+            <h2 ref={waitlistTitleRef} className="section-title scroll-reveal">
               <span className="word-block word-1">Join</span>
               <span className="word-block word-2">the</span>
               <span className="word-block word-3">Waitlist</span>
             </h2>
-            <p className="section-subtitle">Be among the first to experience smart parenting</p>
             <div className="waitlist-content">
-              <div className="waitlist-form-container">
-                <form onSubmit={handleWaitlistSubmit} className="waitlist-form">
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                      className="form-input"
-                    />
+              <div className="waitlist-text-content">
+                <h3 className="waitlist-headline">Start Your Journey to Worry-Free Parenting</h3>
+                <p className="waitlist-description">
+                  Join thousands of parents who are already experiencing the peace of mind that comes with smart, AI-powered baby care.
+                </p>
+                <div className="waitlist-trust-points">
+                  <div className="trust-point">
+                    <span className="trust-icon">✓</span>
+                    <span className="trust-text">Early access to exclusive features</span>
                   </div>
-                  <div className="form-group">
-                    <input
-                      type="email"
-                      placeholder="Your Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="form-input"
-                    />
+                  <div className="trust-point">
+                    <span className="trust-icon">✓</span>
+                    <span className="trust-text">Special launch pricing for waitlist members</span>
                   </div>
+                  <div className="trust-point">
+                    <span className="trust-icon">✓</span>
+                    <span className="trust-text">Priority support and updates</span>
+                  </div>
+                </div>
+                <div ref={waitlistCtaRef} className="waitlist-cta-container scroll-reveal">
                   <button 
-                    type="submit" 
-                    className="btn btn-primary"
-                    disabled={isLoading}
+                    onClick={handleJoinWaitlist}
+                    className="btn btn-primary waitlist-button"
                   >
-                    {isLoading ? 'Joining...' : 'Join the Waitlist'}
+                    Join Waitlist Now
                   </button>
-                  {message && (
-                    <p className={`form-message ${message.includes('Error') || message.includes('Please enter') ? 'error' : 'success'}`}>
-                      {message}
-                    </p>
-                  )}
-                </form>
+                  <p className="waitlist-urgency">Limited spots available • Join today</p>
+                </div>
               </div>
               <div className="waitlist-image-container">
-                <img src={motherImage} alt="Mother with baby" className="waitlist-mother-image" />
+                <img src={motherImage} alt="Happy mother with baby" className="waitlist-mother-image" />
               </div>
             </div>
           </div>

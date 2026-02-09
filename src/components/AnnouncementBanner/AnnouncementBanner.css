@@ -1,0 +1,188 @@
+/* Announcement Banner - Premium Marquee Style */
+.announcement-banner {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(6, 20, 40, 0.95) 0%, rgba(11, 42, 68, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(158, 219, 255, 0.15);
+  overflow: hidden;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  /* Prevent layout shift */
+  min-height: 48px;
+  max-height: 48px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .announcement-banner {
+    margin-bottom: 0;
+  }
+}
+
+.announcement-banner-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 2%,
+    black 98%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 2%,
+    black 98%,
+    transparent 100%
+  );
+}
+
+.announcement-banner-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+  height: 100%;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+  white-space: nowrap;
+  /* Use GPU acceleration for smooth animation */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Smooth horizontal scrolling animation - animate exactly 33.333% (one set of 2) */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.announcement-text {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #9EDBFF;
+  text-transform: uppercase;
+  opacity: 0.9;
+  flex-shrink: 0;
+  /* Premium wider look */
+  padding: 0 2rem;
+  position: relative;
+  white-space: nowrap;
+  min-width: max-content;
+}
+
+/* Subtle glow effect for premium feel */
+.announcement-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #5DBBFF;
+  border-radius: 50%;
+  opacity: 0.6;
+  box-shadow: 0 0 8px rgba(93, 187, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .announcement-banner {
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+  }
+
+  .announcement-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    padding: 0 1.5rem;
+  }
+
+  .announcement-banner-content {
+    gap: 2.5rem;
+    animation-duration: 22s;
+  }
+}
+
+@media (max-width: 768px) {
+  .announcement-banner {
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+  }
+
+  .announcement-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 0 1.25rem;
+  }
+
+  .announcement-banner-content {
+    gap: 2rem;
+    animation-duration: 20s;
+  }
+
+  .announcement-text::before {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .announcement-banner {
+    height: 38px;
+    min-height: 38px;
+    max-height: 38px;
+  }
+
+  .announcement-text {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    padding: 0 1rem;
+  }
+
+  .announcement-banner-content {
+    gap: 1.5rem;
+    animation-duration: 18s;
+  }
+
+  .announcement-text::before {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .announcement-banner-content {
+    animation: none;
+    justify-content: center;
+  }
+  
+  .announcement-text:nth-child(n+2) {
+    display: none;
+  }
+}

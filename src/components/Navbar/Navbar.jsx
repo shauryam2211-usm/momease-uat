@@ -5,22 +5,34 @@ import logoImage from '../../assets/images/momease-logo.png'
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const sections = ['challenges', 'solution', 'features', 'how-it-works', 'waitlist']
+    const navbar = document.querySelector('.navbar')
     
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200 // Offset for navbar and some padding
+      const scrollPosition = window.scrollY
+      
+      // Toggle scrolled class at 80px scroll
+      if (scrollPosition > 80) {
+        setIsScrolled(true)
+        if (navbar) navbar.classList.add('scrolled')
+      } else {
+        setIsScrolled(false)
+        if (navbar) navbar.classList.remove('scrolled')
+      }
 
       // Find which section is currently in view
       let currentSection = ''
+      const scrollPositionWithOffset = scrollPosition + 200 // Offset for navbar and some padding
       
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i])
         if (section) {
           const sectionTop = section.offsetTop
           
-          if (scrollPosition >= sectionTop) {
+          if (scrollPositionWithOffset >= sectionTop) {
             currentSection = sections[i]
             break
           }
@@ -46,19 +58,53 @@ const Navbar = () => {
       e.preventDefault()
       e.stopPropagation()
     }
+    
+    // Close menu immediately
     setIsMenuOpen(false)
 
     if (href && href.startsWith('#')) {
       const sectionId = href.slice(1)
       const section = document.getElementById(sectionId)
       if (section) {
-        // Delay allows menu to close before scroll (Android & iOS Safari/Chrome)
+        // Small delay to allow menu to close before scroll
         setTimeout(() => {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          const headerOffset = 80
+          const elementPosition = section.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
         }, 150)
       }
     }
   }
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isMenuOpen && 
+          !e.target.closest('.navbar-menu') && 
+          !e.target.closest('.mobile-menu-toggle')) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      // Use setTimeout to avoid immediate closure
+      setTimeout(() => {
+        document.addEventListener('click', handleClickOutside, true)
+        // Also close on touch outside
+        document.addEventListener('touchstart', handleClickOutside, true)
+      }, 100)
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('touchstart', handleClickOutside, true)
+    }
+  }, [isMenuOpen])
 
   const handleJoinWaitlist = () => {
     const waitlistSection = document.getElementById('waitlist')
@@ -70,7 +116,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         {/* Logo Section - Left Side */}
         <div className="navbar-logo">
           <img src={logoImage} alt="Momease Logo - Parenting Made Easy" className="logo-image" />
@@ -80,8 +126,13 @@ const Navbar = () => {
         <div className="navbar-content">
           <button 
             className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              setIsMenuOpen(!isMenuOpen)
+            }}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             <span></span>
             <span></span>
@@ -134,24 +185,8 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
-          
-          {/* Actions - Right Side */}
-          <div className="navbar-actions">
-            <button 
-              className="btn-cta" 
-              onClick={handleJoinWaitlist}
-            >
-              Join Waitlist
-            </button>
-          </div>
         </div>
       </nav>
-      {isMenuOpen && (
-        <div 
-          className={`menu-backdrop ${isMenuOpen ? 'active' : ''}`} 
-          onClick={() => setIsMenuOpen(false)}
-        ></div>
-      )}
     </>
   )
 }
